@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LMS Start Screen</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .container {
+        text-align: center;
+        color: white;
+        opacity: 0;
+        transition: opacity 1s ease;
+    }
+
+    .logo {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        animation: float 2s ease-in-out infinite;
+    }
+
+    .logo img {
+        width: 80px;
+    }
+
+    @keyframes float {
+        0%,100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    .title {
+        margin-top: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        opacity: 0.8;
+        margin-top: 5px;
+    }
+
+    .loader {
+        margin-top: 25px;
+        width: 50px;
+        height: 50px;
+        border: 5px solid rgba(255,255,255,0.3);
+        border-top: 5px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        100% { transform: rotate(360deg); }
+    }
+
+    .start-btn {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 12px 30px;
+        background: white;
+        color: #2a5298;
+        border: none;
+        border-radius: 30px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        display: none;
+        transition: 0.3s;
+    }
+
+    .start-btn:hover {
+        background: #ddd;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="container" id="mainContent">
+    <div class="logo">
+        <!-- Apna logo yaha daalo -->
+        <img src="logo.png" alt="Logo">
+    </div>
+
+    <div class="title">Welcome to LMS</div>
+    <div class="subtitle">Learn Smart. Grow Fast.</div>
+
+    <div class="loader" id="loader"></div>
+</div>
+
+<button class="start-btn" id="startBtn">Start Learning</button>
+
+<script>
+    // Show content smoothly
+    window.onload = () => {
+        document.getElementById("mainContent").style.opacity = 1;
+    };
+
+    // 4-5 sec loading then show button
+    setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("startBtn").style.display = "block";
+    }, 4500);
+
+    // Button click action
+    document.getElementById("startBtn").addEventListener("click", () => {
+        window.location.href = "home.html"; // change to your main page
+    });
+</script>
+
+</body>
+</html>
